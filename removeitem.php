@@ -10,19 +10,19 @@ if(!isset($_SESSION['id'])) {
 
   $result = Query("SELECT * FROM orders where user_id = ".$_SESSION['id'] . " AND " . "product_id = ".$_GET['id']);
 
-  $quantity = $result ? $result[0]['quantity']+1 : 1;
-
-
-// Insert into cart
-if($result) {
+  $quantity=1;
+  
+  // Insert into cart
+  if($result && $result[0]['quantity'] > 1) {
+    $quantity = $result[0]['quantity']-1;
   $sql = "UPDATE orders SET quantity = ? WHERE user_id = ? AND product_id= ?";
   $stmt = $conn->prepare($sql);
   $stmt->bind_param("iii", $quantity, $_SESSION['id'], $product_id);
 }
-else{
-  $sql = "INSERT INTO orders(user_id,product_id, quantity) VALUES (?, ?, ?)";
+else if($quantity == 1){
+  $sql = "DELETE orders from orders where user_id = ? AND product_id= ?";
   $stmt = $conn->prepare($sql);
-  $stmt->bind_param("iii", $_SESSION['id'], $product_id, $quantity);
+  $stmt->bind_param("ii", $_SESSION['id'], $product_id);
 }
 
 

@@ -78,6 +78,7 @@ body {
   border-radius: 4px;
   cursor: pointer;
   margin-left: 5px;
+  text-decoration: none;
 }
 
 .auth-btn:hover {
@@ -284,6 +285,7 @@ body {
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  text-decoration: none;
 }
 
 .add-btn:hover {
@@ -313,4 +315,49 @@ body {
 
 .back-btn:hover {
   background-color: #ccc;
+}
+
+
+
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: fit-content;
+}
+
+.cart-item-image img {
+  width: 160px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.cart-item-details {
+  margin-left: 16px; /* similar to ml-4 */
+}
+
+.cart-item-details span {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.product-name {
+  font-size: 1.25rem; /* similar to text-xl */
+  font-weight: bold;
+}
+
+.remove-link {
+  color: #ff4d4d;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.remove-link:hover {
+  text-decoration: underline;
 }

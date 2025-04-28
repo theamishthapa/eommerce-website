@@ -25,6 +25,7 @@ function toggleOverlay(type) {
   document.getElementById("overlay").style.display = "flex";
   document.getElementById("formTitle").innerText =
     type === "signup" ? "Sign Up" : "Login";
+  document.getElementById("submit").value = type === "signup" ? "register" : "login";
 }
 
 function closeOverlay() {
@@ -32,7 +33,7 @@ function closeOverlay() {
 }
 
 // showing product detal
-function showProductDetail(name, imageUrl, description) {
+function showProductDetail(name, imageUrl, description,addToCart) {
   const content = document.querySelector(".content");
   content.innerHTML = `
       <div class="product-detail">
@@ -40,7 +41,7 @@ function showProductDetail(name, imageUrl, description) {
         <img src="${imageUrl}" alt="${name}" />
         <h2>${name}</h2>
         <p>${description}</p>
-        <button class="add-btn">Add to Cart</button>
+        <a class="add-btn" href="${addToCart}">Add to Cart</a>
       </div>
     `;
 }
